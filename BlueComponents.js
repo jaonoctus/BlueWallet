@@ -767,6 +767,26 @@ export const BlueHeaderDefaultSub = props => {
   );
 };
 
+const totalBalanceStyle = StyleSheet.create({
+  balance: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+});
+
+const BlueTotalBalance = () => {
+  const { wallets, getBalance } = useContext(BlueStorageContext);
+
+  const [totalBalance, setTotalBalance] = useState(0);
+
+  useEffect(() => {
+    setTotalBalance(getBalance());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [wallets]);
+
+  return <Text style={totalBalanceStyle.balance}>{formatBalance(totalBalance, 'BTC', true)}</Text>;
+};
+
 export const BlueHeaderDefaultMain = props => {
   const { colors } = useTheme();
   const { isDrawerList } = props;
@@ -781,6 +801,8 @@ export const BlueHeaderDefaultMain = props => {
           paddingHorizontal: 4,
         },
       }}
+      centerComponent={<BlueTotalBalance />}
+      rightComponent={<BluePlusIcon onPress={props.onNewWalletPress} Component={TouchableOpacity} />}
       placement="left"
       containerStyle={{
         borderTopColor: isDrawerList ? colors.elevated : colors.background,
@@ -793,7 +815,6 @@ export const BlueHeaderDefaultMain = props => {
       bottomDivider={false}
       topDivider={false}
       backgroundColor={isDrawerList ? colors.elevated : colors.background}
-      rightComponent={<BluePlusIcon onPress={props.onNewWalletPress} Component={TouchableOpacity} />}
     />
   );
 };
