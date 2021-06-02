@@ -31,6 +31,7 @@ import WalletsAddMultisigHelp from './screen/wallets/addMultisigHelp';
 import PleaseBackup from './screen/wallets/pleaseBackup';
 import PleaseBackupLNDHub from './screen/wallets/pleaseBackupLNDHub';
 import ImportWallet from './screen/wallets/import';
+import ImportBIP39Wallet from './screen/wallets/importBIP39';
 import WalletDetails from './screen/wallets/details';
 import WalletExport from './screen/wallets/export';
 import ExportMultisigCoordinationSetup from './screen/wallets/exportMultisigCoordinationSetup';
@@ -193,6 +194,7 @@ const AddWalletRoot = () => {
     <AddWalletStack.Navigator screenOptions={defaultStackScreenOptions}>
       <AddWalletStack.Screen name="AddWallet" component={AddWallet} options={AddWallet.navigationOptions(theme)} />
       <AddWalletStack.Screen name="ImportWallet" component={ImportWallet} options={ImportWallet.navigationOptions(theme)} />
+      <AddWalletStack.Screen name="ImportBIP39Wallet" component={ImportBIP39Wallet} options={ImportBIP39Wallet.navigationOptions(theme)} />
       <AddWalletStack.Screen name="PleaseBackup" component={PleaseBackup} options={PleaseBackup.navigationOptions(theme)} />
       <AddWalletStack.Screen
         name="PleaseBackupLNDHub"
